@@ -39,6 +39,9 @@ export default function ResultScreen({
       difficulty
     });
     setIsSaved(true);
+    setTimeout(() => {
+      onOpenLeaderboard();
+    }, 400);
   };
 
   const getEvaluation = () => {

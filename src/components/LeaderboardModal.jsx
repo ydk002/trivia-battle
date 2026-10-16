@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Trophy, Medal, Trash2, Calendar, Award } from 'lucide-react';
 import { getLeaderboard, clearLeaderboard } from '../utils/leaderboard';
 import { soundFx } from '../utils/audio';
 
 export default function LeaderboardModal({ isOpen, onClose }) {
   const [list, setList] = useState(() => getLeaderboard());
+
+  useEffect(() => {
+    if (isOpen) {
+      setList(getLeaderboard());
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

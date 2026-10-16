@@ -1,24 +1,15 @@
 const LEADERBOARD_KEY = 'trivia_battle_leaderboard';
 
-const DEFAULT_SCORES = [
-  { id: '1', name: 'CyberChampion', score: 5, total: 5, difficulty: 'hard', date: '2026-10-15' },
-  { id: '2', name: 'QuizWizard', score: 5, total: 5, difficulty: 'medium', date: '2026-10-14' },
-  { id: '3', name: 'PixelNinja', score: 4, total: 5, difficulty: 'easy', date: '2026-10-15' },
-  { id: '4', name: 'TriviaMaster', score: 4, total: 5, difficulty: 'medium', date: '2026-10-13' },
-  { id: '5', name: 'PlayerOne', score: 3, total: 5, difficulty: 'easy', date: '2026-10-12' },
-];
-
 export function getLeaderboard() {
   try {
     const data = localStorage.getItem(LEADERBOARD_KEY);
     if (!data) {
-      localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(DEFAULT_SCORES));
-      return DEFAULT_SCORES;
+      return [];
     }
     return JSON.parse(data);
   } catch (err) {
     console.error('Hiba a ranglista betöltésekor:', err);
-    return DEFAULT_SCORES;
+    return [];
   }
 }
 
